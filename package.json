@@ -1,0 +1,30 @@
+{
+  "name": "refreshments",
+  "version": "1.0.0",
+  "description": "back to the future",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers js:@babel/register --watch --slow 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eferhatg/refreshments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eferhatg/refreshments/issues"
+  },
+  "homepage": "https://github.com/eferhatg/refreshments#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-plugin-dynamic-import-node-babel-7": "^2.0.7",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "sinon": "^6.1.5",
+    "sinon-chai": "^3.2.0"
+  }
+}
