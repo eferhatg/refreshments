@@ -17,8 +17,3 @@ export class Iterator{
     delete this.data[this.step];
   }  
 }
-
-
-export const subsum=(sum)=>{
-
-}
