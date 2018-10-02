@@ -1,11 +1,11 @@
 import chai from 'chai';
 import { describe, it } from 'mocha';
-import { hasSubSumDP, hasSubSumRecursive } from '../common_problems/subsetsum';
+import { hasSubSumDP, hasSubSumRecursive, findAllSubsets } from '../common_problems/subsetsum';
 
 chai.should();
 
 describe('hasSubSumRecursive', () => {
-  it('should determine if a sum is subset of array', () => {
+  it('should be a function', () => {
     (typeof (hasSubSumRecursive)).should.equal('function');
   });
 
@@ -24,7 +24,7 @@ describe('hasSubSumRecursive', () => {
 
 
 describe('hasSubSumDynamicProgramming', () => {
-  it('should determine if a sum is subset of array', () => {
+  it('should be a function', () => {
     (typeof (hasSubSumDP)).should.equal('function');
   });
 
@@ -41,14 +41,13 @@ describe('hasSubSumDynamicProgramming', () => {
   });
 });
 
-// describe('perfectSubSetSum', () => {
-//   it('should determine if a sum is subset of array', () => {
-//     (typeof (perfectSubSet)).should.equal('function');
-//   });
+describe('findAllSubsets', () => {
+  it('should be a function', () => {
+    (typeof (findAllSubsets)).should.equal('function');
+  });
 
-//   it('should return subsets with given sum', () => {
-//     const arr = [3, 34, 4, 12, 5, 2];
-//     const sum = 9;
-//     perfectSubSet(arr, arr.length, sum).should.eql([[3, 4, 2], [5, 4]]);
-//   });
-// });
+  it('should return subsets with given sum', () => {
+    const arr = [3, 5, 4];
+    findAllSubsets(arr).should.eql([[], [3], [4], [3, 4], [5], [3, 5], [4, 5], [3, 4, 5]]);
+  });
+});

@@ -44,55 +44,22 @@ export const hasSubSumDP = (arr, n, sum) => {
   return set[n][sum];
 };
 
+export const findAllSubsets = (arr) => {
+  const dublicateRemover = {};
+  // removing dublicate
+  for (let i = 0; i < arr.length; i += 1) {
+    dublicateRemover[arr[i]] = true;
+  }
 
-/*
+  const uniqueArr = Object.keys(dublicateRemover);
 
+  const result = [[]];
 
-PERFECT SUBSET SUM
-
-
-*/
-
-// let dp = [];
-// const result = [];
-// const dpArray = (arr, n, sum) => {
-//   const set = new Array(n + 1).fill(null).map(() => new Array(n + 1).fill(null));
-
-//   for (let i = 0; i <= n; i += 1) {
-//     set[i][0] = true;
-//   }
-
-//   for (let i = 1; i <= sum; i += 1) {
-//     set[0][i] = false;
-//   }
-
-//   for (let i = 1; i <= n; i += 1) {
-//     for (let j = 1; j <= sum; j += 1) {
-//       if (arr[i - 1] > j) {
-//         set[i][j] = set[i - 1][j];
-//       }
-//       if (j >= arr[i - 1]) {
-//         if (set[i - 1][j]) {
-//           set[i][j] = true;
-//         } else {
-//           set[i][j] = set[i - 1][j - arr[i - 1]];
-//         }
-//       }
-//     }
-//   }
-//   return set;
-// };
-
-// const getSubSets = (arr, i, sum, hashset) => {
-//   if (i === 0 && sum !== 0 && dp[0][sum]) {
-//     hashset.push(arr[i]);
-//     result.push(hashset);
-//     return;
-//   }
-// };
-
-
-// const perfectSubSet = (arr, n, sum) => {
-//   dp = dpArray(arr, n, sum);
-//   if (!set[n][sum]) return [];
-// };
+  for (let i = 0; i < uniqueArr.length; i += 1) {
+    const len = result.length;
+    for (let j = 0; j < len; j += 1) {
+      result.push(result[j].concat(parseInt(uniqueArr[i], 10)));
+    }
+  }
+  return result;
+};
