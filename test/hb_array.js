@@ -1,6 +1,6 @@
 import chai from 'chai';
 import { describe, it } from 'mocha';
-import { Iterator } from '../handbook/array';
+import { Iterator, Paginator } from '../handbook/array';
 
 chai.should();
 
@@ -36,5 +36,20 @@ describe('Iterator', () => {
     itr.hasNext().should.equal(true);
     itr.next();
     itr.hasNext().should.equal(false);
+  });
+});
+
+describe('Paginator', () => {
+  it('should define function correctly', () => {
+    (typeof (Paginator)).should.equal('function');
+  });
+
+  it('should paginate array', () => {
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    const pgntr = new Paginator(arr);
+    pgntr.paginate(3, 2).should.eql([4, 5, 6]);
+    pgntr.paginate(4, 1).should.eql([1, 2, 3, 4]);
+    pgntr.paginate(4, 4).should.eql([13]);
+    pgntr.paginate(4, 5).should.eql([]);
   });
 });
