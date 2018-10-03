@@ -81,6 +81,7 @@ export default class BinarySearchTree {
   }
 
   traverseInOrder() {
+    
     var curr = this.root;
     var result = [];
     let traverse = (node) => {
