@@ -1,6 +1,6 @@
 import chai from 'chai';
 import { describe, it } from 'mocha';
-import { Iterator, Paginator } from '../handbook/array';
+import { Iterator, Paginator, sort2dArray, getProductsOfAllIntsExceptAtIndex } from '../handbook/array';
 
 chai.should();
 
@@ -51,5 +51,27 @@ describe('Paginator', () => {
     pgntr.paginate(4, 1).should.eql([1, 2, 3, 4]);
     pgntr.paginate(4, 4).should.eql([13]);
     pgntr.paginate(4, 5).should.eql([]);
+  });
+});
+
+describe('Sort2DArray', () => {
+  it('should define function correctly', () => {
+    (typeof (sort2dArray)).should.equal('function');
+  });
+
+  it('should sort inner arrays asc and sort outer arrays to sums', () => {
+    const arr = [[13, 9, 18], [4, 2, 1, 0], [21, 5, 100]];
+    sort2dArray(arr).should.eql([[0, 1, 2, 4], [9, 13, 18], [5, 21, 100]]);
+  });
+});
+
+describe('getProductsOfAllIntsExceptAtIndex', () => {
+  it('should define function correctly', () => {
+    (typeof (getProductsOfAllIntsExceptAtIndex)).should.equal('function');
+  });
+
+  it('should getProductsOfAllIntsExceptAtIndex', () => {
+    const arr = [1, 7, 3, 4];
+    getProductsOfAllIntsExceptAtIndex(arr).should.eql([84, 12, 28, 21]);
   });
 });
