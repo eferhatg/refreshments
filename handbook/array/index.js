@@ -88,3 +88,64 @@ export const getProductsOfAllIntsExceptAtIndex = (arr) => {
 
   return result;
 };
+
+export const commonElemsOfArrays = (nums1, nums2) => {
+  /*
+    O(N*M) Brute
+      iterate first array N
+        look for nums with indexOf M
+
+    Greedy O(N+M)
+      set for N = {elem:true} O(1)
+      iterate second array M
+        look for set[mElem]
+          if true push to results.
+    */
+
+  const set = {};
+  const res = [];
+  for (let i = 0; i < nums1.length; i += 1) {
+    set[nums1[i]] = true;
+  }
+  for (let i = 0; i < nums2.length; i += 1) {
+    if (set[nums2[i]]) {
+      res.push(nums2[i]);
+    }
+  }
+  return res;
+};
+
+
+export const zeroSubSequence = (arr) => {
+  /*
+    [1, -2, 3, 5, -8, -1]
+    [1, -1, 2, 7, -1, -2]
+    set = {elem:[repetedIndexes]}
+    if elem.length>1
+        splice(ix1-1,(ix2-ix1))
+  */
+
+  const set = {};
+  let indexes = [];
+  let sum = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += arr[i];
+    if (set[sum]) set[sum].push(i);
+    else set[sum] = [i];
+
+    if (set[sum].length > 1) {
+      indexes = set[sum];
+      break;
+    }
+  }
+
+  return arr.splice(indexes[0] + 1, (indexes[1] - indexes[0]));
+};
+
+/**
+ * 
+ * [5,4,3,2,9] O(N) Time
+ * [2,1,0,4,3] O(1)
+ * [3,4,5,9,2] O(N) Space
+ * 
+ */

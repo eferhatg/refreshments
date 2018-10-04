@@ -1,6 +1,13 @@
 import chai from 'chai';
 import { describe, it } from 'mocha';
-import { Iterator, Paginator, sort2dArray, getProductsOfAllIntsExceptAtIndex } from '../handbook/array';
+import {
+  Iterator,
+  Paginator,
+  sort2dArray,
+  getProductsOfAllIntsExceptAtIndex,
+  commonElemsOfArrays,
+  zeroSubSequence,
+} from '../handbook/array';
 
 chai.should();
 
@@ -73,5 +80,39 @@ describe('getProductsOfAllIntsExceptAtIndex', () => {
   it('should getProductsOfAllIntsExceptAtIndex', () => {
     const arr = [1, 7, 3, 4];
     getProductsOfAllIntsExceptAtIndex(arr).should.eql([84, 12, 28, 21]);
+  });
+});
+
+describe('commonElemsOfArrays', () => {
+  it('should define function correctly', () => {
+    (typeof (commonElemsOfArrays)).should.equal('function');
+  });
+
+  it('should find commonElemsOfArrays', () => {
+    let arr = [2, 7, 3, 4];
+    let arr1 = [12, 7, 13, 4];
+    commonElemsOfArrays(arr, arr1).should.eql([7, 4]);
+    arr1 = [12];
+    commonElemsOfArrays(arr, arr1).should.eql([]);
+    arr1 = [2];
+    commonElemsOfArrays(arr, arr1).should.eql([2]);
+    arr1 = [];
+    arr = [];
+    commonElemsOfArrays(arr, arr1).should.eql([]);
+  });
+});
+
+describe('zeroSubSequence', () => {
+  it('should define function correctly', () => {
+    (typeof (zeroSubSequence)).should.equal('function');
+  });
+
+  it('should find zeroSubSequence', () => {
+    let arr = [2, 7, 3, 4, -2, -5];
+
+    zeroSubSequence(arr).should.eql([3, 4, -2, -5]);
+
+    arr = [1, -2, 3, 5, -8, -1];
+    zeroSubSequence(arr).should.eql([3, 5, -8]);
   });
 });
