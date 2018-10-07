@@ -7,6 +7,9 @@ import {
   getProductsOfAllIntsExceptAtIndex,
   commonElemsOfArrays,
   zeroSubSequence,
+  twoSum,
+  threeSum,
+  fourSum,
 } from '../handbook/array';
 
 chai.should();
@@ -114,5 +117,44 @@ describe('zeroSubSequence', () => {
 
     arr = [1, -2, 3, 5, -8, -1];
     zeroSubSequence(arr).should.eql([3, 5, -8]);
+  });
+});
+
+describe('twoSum', () => {
+  it('should define function correctly', () => {
+    (typeof (twoSum)).should.equal('function');
+  });
+
+  it('should find target pairs', () => {
+    const arr = [2, 7, 3, 4, -2, -5];
+    const target = 11;
+
+    twoSum(arr, target).should.eql([7, 4]);
+  });
+});
+
+
+describe('threeSum', () => {
+  it('should define function correctly', () => {
+    (typeof (threeSum)).should.equal('function');
+  });
+
+  it('should find target triplets', () => {
+    const arr = [2, 7, 3, 4, -2, -5];
+    const target = 9;
+    threeSum(arr, target).should.eql([-2, 4, 7]);
+  });
+});
+
+
+describe('fourSum', () => {
+  it('should define function correctly', () => {
+    (typeof (fourSum)).should.equal('function');
+  });
+
+  it('should find target quadruplets', () => {
+    const arr = [2, 7, 3, 4, -2, -5];
+    const target = 12;
+    fourSum(arr, target).should.eql([-2, 3, 4, 7]);
   });
 });

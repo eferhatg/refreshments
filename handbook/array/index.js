@@ -115,7 +115,6 @@ export const commonElemsOfArrays = (nums1, nums2) => {
   return res;
 };
 
-
 export const zeroSubSequence = (arr) => {
   /*
     [1, -2, 3, 5, -8, -1]
@@ -130,8 +129,7 @@ export const zeroSubSequence = (arr) => {
   let sum = 0;
   for (let i = 0; i < arr.length; i += 1) {
     sum += arr[i];
-    if (set[sum]) set[sum].push(i);
-    else set[sum] = [i];
+    if (set[sum]) { set[sum].push(i); } else { set[sum] = [i]; }
 
     if (set[sum].length > 1) {
       indexes = set[sum];
@@ -142,10 +140,97 @@ export const zeroSubSequence = (arr) => {
   return arr.splice(indexes[0] + 1, (indexes[1] - indexes[0]));
 };
 
-/**
- * 
- * [5,4,3,2,9] O(N) Time
- * [2,1,0,4,3] O(1)
- * [3,4,5,9,2] O(N) Space
- * 
- */
+export const twoSum = (arr, target) => {
+  /*
+    [2, 7, 3, 4, -2, -5]  11
+
+    2,0 7,1 3,2 4,3 -2,4 -5,5
+
+    check if if map[target - arr[i]]
+  */
+
+  const map = {};
+  for (let i = 0; i < arr.length; i++) {
+    map[arr[i]] = i;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (map[target - arr[i]]) {
+      return [
+        arr[i], target - arr[i],
+      ];
+    }
+  }
+  return [];
+};
+
+export const threeSum = (arr, target) => {
+  /**
+   * [1,2,3,4,5,6,7,8]
+   * O(n^3)
+   * sort array
+   * iterate first (i)
+   *    iterate j = i+1
+   *    iterate k = len-1
+   * VALUES SHOULD BE UNIQUE
+   */
+  arr.sort((a, b) => a - b);
+  console.log(arr);
+
+
+  for (let i = 0; i < arr.length; i++) {
+    let j = i + 1;
+    let k = arr.length - 1;
+
+    while (j < k) {
+      const sum = arr[i] + arr[j] + arr[k];
+      console.log(sum);
+
+      if (sum === target) {
+        return [arr[i], arr[j], arr[k]];
+      }
+      if (sum < target) {
+        j++;
+      } else {
+        k--;
+      }
+    }
+  }
+  return [];
+};
+
+
+export const fourSum = (arr, target) => {
+  /**
+   * [1,2,3,4,5,6,7,8]
+   * O(n^3)
+   * sort array
+   * iterate first (i)
+   *    iterate j = i+1
+   *    iterate k = len-1
+   * VALUES SHOULD BE UNIQUE
+   */
+  arr.sort((a, b) => a - b);
+  console.log(arr);
+
+  for (let q = arr.length - 1; q >= 0; q--) {
+    for (let i = 0; i < arr.length; i++) {
+      let j = i + 1;
+      let k = q - 1;
+
+      while (j < k) {
+        const sum = arr[i] + arr[j] + arr[k] + arr[q];
+        console.log(sum);
+
+        if (sum === target) {
+          return [arr[i], arr[j], arr[k] , arr[q]];
+        }
+        if (sum < target) {
+          j++;
+        } else {
+          k--;
+        }
+      }
+    }
+  }
+  return [];
+};
