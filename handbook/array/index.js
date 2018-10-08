@@ -222,7 +222,7 @@ export const fourSum = (arr, target) => {
         console.log(sum);
 
         if (sum === target) {
-          return [arr[i], arr[j], arr[k] , arr[q]];
+          return [arr[i], arr[j], arr[k], arr[q]];
         }
         if (sum < target) {
           j++;
@@ -233,4 +233,30 @@ export const fourSum = (arr, target) => {
     }
   }
   return [];
+};
+
+export const maxContinSubSet = (arr) => {
+  /* BF
+    iterate start index
+      iterate array size from 1 to N-i (s)
+
+  */
+  let generalSum = 0;
+  const maxIxs = [0, 0];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i; j < arr.length; j++) {
+      const subsum = 0;
+      for (let k = i; k < i + j; k++) {
+        subsum += arr[k];
+      }
+      if (generalSum < subsum) {
+        generalSum = subsum;
+        maxIxs[0] = i;
+        maxIxs[1] = i + j - 1;
+      }
+      generalSum = subsum > generalSum ? subsum : generalSum;
+    }
+  }
+
+  return arr.splice(maxIxs[0], maxIxs[1] - 1);
 };

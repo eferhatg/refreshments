@@ -10,6 +10,7 @@ import {
   twoSum,
   threeSum,
   fourSum,
+  maxContinSubSet,
 } from '../handbook/array';
 
 chai.should();
@@ -156,5 +157,18 @@ describe('fourSum', () => {
     const arr = [2, 7, 3, 4, -2, -5];
     const target = 12;
     fourSum(arr, target).should.eql([-2, 3, 4, 7]);
+  });
+});
+
+describe('maxContinSubSet', () => {
+  it('should define function correctly', () => {
+    (typeof (maxContinSubSet)).should.equal('function');
+  });
+
+  it('should find maximum continous subset', () => {
+    const arr = [-2, -3, 4, -1, -2, 1, 5, -3];
+
+  // maxContinSubSet(arr).should.equals(7);
+  maxContinSubSet(arr).should.eql([4, -1, -2, 1, 5]);
   });
 });
