@@ -260,3 +260,124 @@ export const maxContinSubSet = (arr) => {
 
   return arr.splice(maxIxs[0], maxIxs[1] - 1);
 };
+
+export const trappingRainWater = (arr) => {
+  const leftMax = {};
+  const rightMax = {};
+  const len = arr.length;
+  let volume = 0;
+
+  leftMax[0] = arr[0];
+  rightMax[len - 1] = arr[len - 1];
+
+  for (let i = 1; i < len; i++) {
+    leftMax[i] = leftMax[i - 1] > arr[i] ? leftMax[i - 1] : arr[i];
+  }
+
+  for (let i = len - 2; i >= 0; i--) {
+    rightMax[i] = rightMax[i + 1] > arr[i] ? rightMax[i + 1] : arr[i];
+  }
+
+  for (let i = 1; i < len - 1; i++) {
+    const minOfHeight = Math.min(rightMax[i], leftMax[i]);
+    volume += minOfHeight - arr[i];
+  }
+  return volume;
+};
+export const increaseSplittedArray = (arr) => {
+  /**
+   * iterate n to 0
+   *  if elem is not 9 add break return
+   *  if elem is 9 make it 0 and do it until elem not 9
+   */
+
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (arr[i] === 9 && i === 0) {
+      arr[i] = 0;
+      arr.unshift(1);
+      break;
+    } else if (arr[i] === 9) {
+      arr[i] = 0;
+    } else {
+      arr[i]++;
+      break;
+    }
+  }
+  return arr;
+};
+
+
+export const secondMaxValue = (arr) => {
+  let max = arr[0];
+  let secondMax = -Infinity;
+
+  for (let i = 1; i < arr.length; i++) {
+    max = Math.max(max, arr[i]);
+    if (max > arr[i] && secondMax < arr[i]) {
+      secondMax = arr[i];
+    }
+  }
+  return secondMax === -Infinity ? -Infinity : secondMax;
+};
+
+
+export const reverseByOffset = (arr, n) => {
+  /**
+   * [1, 4, 2, 5, 20]
+   * [2, 5, 20, 1, 4]}
+   *
+   * iterate arr
+   *  arr.push(arr.shift())
+   */
+  for (let i = 0; i < n; i++) {
+    arr.push(arr.shift());
+  }
+  return arr;
+};
+
+export const findDublicateWithinKDistance = (arr, k) => {
+  /**
+   * [1, 2, 3, 1, 4, 5]
+   * [1, 2, 3, 4, 5]
+   *
+   * BF: iterate array i from 0 to length
+   *        iterate array j from i to i+n
+   *              if found same with arr[i] then remove it
+   */
+
+
+  const hs = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (hs[arr[i]]) {
+      return true;
+    }
+    hs[arr[i]] = true;
+    if (i >= k) delete hs[arr[i - k]];
+  }
+  return false;
+};
+export const removeDublicateWithinKDistance = (arr, k) => {
+  /**
+   * [1, 2, 3, 1, 4, 5]
+   * [1, 2, 3, 4, 5]
+   *
+   * BF: iterate array i from 0 to length
+   *        iterate array j from i to i+n
+   *              if found same with arr[i] then remove it
+   */
+
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i - 1]) {
+      arr.splice(i, 1);
+      i--;
+      continue;
+    }
+    for (let j = i + 1; j < i + k + 1; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, 1);
+      }
+    }
+  }
+  return arr;
+};

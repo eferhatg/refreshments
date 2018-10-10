@@ -11,6 +11,12 @@ import {
   threeSum,
   fourSum,
   maxContinSubSet,
+  trappingRainWater,
+  increaseSplittedArray,
+  secondMaxValue,
+  reverseByOffset,
+  removeDublicateWithinKDistance,
+  findDublicateWithinKDistance,
 } from '../handbook/array';
 
 chai.should();
@@ -168,7 +174,109 @@ describe('maxContinSubSet', () => {
   it('should find maximum continous subset', () => {
     const arr = [-2, -3, 4, -1, -2, 1, 5, -3];
 
-  // maxContinSubSet(arr).should.equals(7);
-  maxContinSubSet(arr).should.eql([4, -1, -2, 1, 5]);
+    // maxContinSubSet(arr).should.equals(7);
+    maxContinSubSet(arr).should.eql([4, -1, -2, 1, 5]);
   });
 });
+
+
+describe('trappingRainWater', () => {
+  it('should define function correctly', () => {
+    (typeof (trappingRainWater)).should.equal('function');
+  });
+
+  it('should find trapping rain water', () => {
+    const arr = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+
+
+    trappingRainWater(arr).should.equals(6);
+  });
+});
+
+describe('increaseSplittedArray', () => {
+  it('should define function correctly', () => {
+    (typeof (increaseSplittedArray)).should.equal('function');
+  });
+
+  it('should increase splitted array', () => {
+    const arr = [1, 4, 2, 1];
+    increaseSplittedArray(arr).should.eql([1, 4, 2, 2]);
+    const arr2 = [1, 4, 2, 9];
+    increaseSplittedArray(arr2).should.eql([1, 4, 3, 0]);
+    const arr3 = [9, 9, 9, 9];
+    increaseSplittedArray(arr3).should.eql([1, 0, 0, 0, 0]);
+  });
+});
+
+describe('secondMaxValue', () => {
+  it('should define function correctly', () => {
+    (typeof (secondMaxValue)).should.equal('function');
+  });
+
+  it('should find second maximum number', () => {
+    const arr = [1, 4, 2, 1];
+    secondMaxValue(arr).should.equals(2);
+    const arr1 = [1, 4, 4, 1];
+    secondMaxValue(arr1).should.equals(1);
+    const arr2 = [4, 4, 4, 4];
+    secondMaxValue(arr2).should.equals(-Infinity);
+  });
+});
+
+describe('reverseByOffset', () => {
+  it('should define function correctly', () => {
+    (typeof (reverseByOffset)).should.equal('function');
+  });
+
+  it('should reverse array by offset', () => {
+    const arr = [1, 4, 2, 5, 20];
+    const n = 2;
+    reverseByOffset(arr, n).should.eql([2, 5, 20, 1, 4]);
+  });
+});
+
+
+describe('removeDublicateWithinKDistance', () => {
+  it('should define function correctly', () => {
+    (typeof (removeDublicateWithinKDistance)).should.equal('function');
+  });
+
+  it('should remove dublicate within K distance', () => {
+    let arr = [1, 2, 3, 1, 4, 5];
+    let n = 3;
+    removeDublicateWithinKDistance(arr, n).should.eql([1, 2, 3, 4, 5]);
+
+    arr = [1, 2, 3, 4, 1, 2, 3, 4];
+    n = 3;
+    removeDublicateWithinKDistance(arr, n).should.eql([1, 2, 3, 4, 1, 2, 3, 4]);
+
+    arr = [4, 4, 4, 4, 4, 4, 4, 4];
+    n = 3;
+    removeDublicateWithinKDistance(arr, n).should.eql([4]);
+
+    arr = [1, 2, 3, 4, 5, 4];
+    n = 3;
+    removeDublicateWithinKDistance(arr, n).should.eql([1, 2, 3, 4, 5]);
+
+    arr = [1, 2, 3, 4, 5];
+    n = 3;
+    removeDublicateWithinKDistance(arr, n).should.eql([1, 2, 3, 4, 5]);
+  });
+});
+
+describe('findDublicateWithinKDistance', () => {
+  it('should define function correctly', () => {
+    (typeof (removeDublicateWithinKDistance)).should.equal('function');
+  });
+
+  it('should remove dublicate within K distance', () => {
+    let arr = [1, 2, 3, 1, 4, 5];
+    let n = 3;
+    findDublicateWithinKDistance(arr, n).should.equals(true);
+
+    arr = [1, 2, 3, 4];
+    n = 3;
+    findDublicateWithinKDistance(arr, n).should.eql(false);
+  });
+});
+
