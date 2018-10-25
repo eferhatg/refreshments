@@ -383,6 +383,7 @@ export const removeDublicateWithinKDistance = (arr, k) => {
 };
 
 
+
 export const zerosToEnd = (arr) => {
   /**
    * [1, 2, 3, 0, 0, 5]
@@ -409,6 +410,35 @@ export const zerosToEnd = (arr) => {
    }
    return arr;
 
-   
+  }
+
+
+export const findMissingNumber = (arr, arr1) => {
+/*
+[1,3,4,5,6,9]
+[3,5,6,9]
+
+[1,4]
+
+*/
+
+  const hs = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (hs[arr[i]]) hs[arr[i]]++;
+    else hs[arr[i]] = 1;
+  }
+
+  for (let i = 0; i < arr1.length; i++) {
+    hs[arr1[i]]--;
+    if (hs[arr1[i]] === 0) {
+      delete hs[arr1[i]];
+    }
+  }
+
+  const result = [];
+  for (let ket in hs) {
+    result.push(parseInt(ket));
+  }
+  return result;
 
 };
