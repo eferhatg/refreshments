@@ -17,6 +17,7 @@ import {
   reverseByOffset,
   removeDublicateWithinKDistance,
   findDublicateWithinKDistance,
+  findMissingNumber,
 } from '../handbook/array';
 
 chai.should();
@@ -280,3 +281,15 @@ describe('findDublicateWithinKDistance', () => {
   });
 });
 
+
+describe('findMissingNumber', () => {
+  it('should define function correctly', () => {
+    (typeof (findMissingNumber)).should.equal('function');
+  });
+
+  it('should find missing numbers', () => {
+    let arr = [1, 2, 3, 1, 4, 5];
+    const arr1 = [1, 2, 1, 4];
+    findMissingNumber(arr, arr1).should.eql([3, 5]);
+  });
+});
