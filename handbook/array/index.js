@@ -381,3 +381,34 @@ export const removeDublicateWithinKDistance = (arr, k) => {
   }
   return arr;
 };
+
+
+export const zerosToEnd = (arr) => {
+  /**
+   * [1, 2, 3, 0, 0, 5]
+   * [1, 2, 3, 5, 0, 0]
+   *
+   * iterate the array
+   *    splice zeros
+   *    counter++
+   * iterate to the counter
+   *    push zoer to newArray
+   * return newArray
+   *   
+   */
+
+   let counter=0;
+   for(let i=0;i<arr.length;i++){
+     if(arr[i]===0){
+       arr.splice(i,1);
+       counter++;
+     }
+   }
+   for(let i=0;i<counter;i++){
+     arr.push(0);
+   }
+   return arr;
+
+   
+
+};

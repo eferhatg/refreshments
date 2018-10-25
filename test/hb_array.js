@@ -17,6 +17,7 @@ import {
   reverseByOffset,
   removeDublicateWithinKDistance,
   findDublicateWithinKDistance,
+  zerosToEnd
 } from '../handbook/array';
 
 chai.should();
@@ -261,6 +262,19 @@ describe('removeDublicateWithinKDistance', () => {
     arr = [1, 2, 3, 4, 5];
     n = 3;
     removeDublicateWithinKDistance(arr, n).should.eql([1, 2, 3, 4, 5]);
+  });
+});
+
+describe('zerosToEnd', () => {
+  it('should define function correctly', () => {
+    (typeof (zerosToEnd)).should.equal('function');
+  });
+
+  it('should add zeros to end', () => {
+    let arr = [0, 2, 3, 0, 4, 5];
+    let result = [2, 3, 4, 5, 0, 0];
+    zerosToEnd(arr).should.eql(result);
+
   });
 });
 
