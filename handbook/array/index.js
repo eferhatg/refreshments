@@ -383,7 +383,6 @@ export const removeDublicateWithinKDistance = (arr, k) => {
 };
 
 
-
 export const zerosToEnd = (arr) => {
   /**
    * [1, 2, 3, 0, 0, 5]
@@ -395,22 +394,21 @@ export const zerosToEnd = (arr) => {
    * iterate to the counter
    *    push zoer to newArray
    * return newArray
-   *   
+   *
    */
 
-   let counter=0;
-   for(let i=0;i<arr.length;i++){
-     if(arr[i]===0){
-       arr.splice(i,1);
-       counter++;
-     }
-   }
-   for(let i=0;i<counter;i++){
-     arr.push(0);
-   }
-   return arr;
-
+  let counter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      arr.splice(i, 1);
+      counter++;
+    }
   }
+  for (let i = 0; i < counter; i++) {
+    arr.push(0);
+  }
+  return arr;
+};
 
 
 export const findMissingNumber = (arr, arr1) => {
@@ -436,9 +434,17 @@ export const findMissingNumber = (arr, arr1) => {
   }
 
   const result = [];
-  for (let ket in hs) {
+  for (const ket in hs) {
     result.push(parseInt(ket));
   }
   return result;
+};
 
+
+export const findNonRepeatingNumber = (arr) => {
+  let result = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    result ^= arr[i];
+  }
+  return result;
 };

@@ -19,6 +19,7 @@ import {
   findDublicateWithinKDistance,
   zerosToEnd,
   findMissingNumber,
+  findNonRepeatingNumber
 } from '../handbook/array';
 
 chai.should();
@@ -305,5 +306,25 @@ describe('findMissingNumber', () => {
     let arr = [1, 2, 3, 1, 4, 5];
     const arr1 = [1, 2, 1, 4];
     findMissingNumber(arr, arr1).should.eql([3, 5]);
+  });
+});
+
+
+
+describe('findNonRepeatingNumber', () => {
+  it('should define function correctly', () => {
+    (typeof (findNonRepeatingNumber)).should.equal('function');
+  });
+
+  it('should find non-repating number', () => {
+    let arr = [1, 2, 3, 1, 4, 3, 2];
+
+    findNonRepeatingNumber(arr).should.equal(4);
+  });
+
+  it('should find zero if non-repeating number doesnt exist', () => {
+    let arr = [1, 2, 3, 1, 4, 3, 2,4];
+
+    findNonRepeatingNumber(arr).should.equal(0);
   });
 });
