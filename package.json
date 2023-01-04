@@ -18,7 +18,7 @@
   "homepage": "https://github.com/eferhatg/refreshments#readme",
   "devDependencies": {
     "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.20.7",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-plugin-dynamic-import-node-babel-7": "^2.0.7",
